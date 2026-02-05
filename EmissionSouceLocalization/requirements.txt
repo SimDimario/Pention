@@ -1,0 +1,10 @@
+numpy
+joblib
+scikit-learn==1.6.1
+tensorflow 
+pandas
+scipy
+joblib
+fastapi
+uvicorn
+
