@@ -212,6 +212,11 @@ def run_application(payload):
     status_text.text("Wind rose graph generation...")
     plot_wind_rose(wind_dir, wind_speed, wind_rose_placeholder)
 
+    st.session_state["wind_rose"] = {
+        "wind_dir": wind_dir.tolist(),
+        "wind_speed": wind_speed
+    }
+
     #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     # --- Localizzazione sorgente
@@ -631,6 +636,12 @@ else:
 
         st_folium(m, width=700, height=500)
 
+    if "wind_rose" in st.session_state:
+        plot_wind_rose(
+            st.session_state["wind_rose"]["wind_dir"],
+            st.session_state["wind_rose"]["wind_speed"],
+            wind_rose_placeholder
+        )
 
 
 #   if results["dispersion_map_path"] is not None:
